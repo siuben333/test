@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/food', [App\Http\Controllers\PizzaController::class,'index'])->name('food.index');
+Route::post('/food/create', [App\Http\Controllers\PizzaController::class,'save'])->name('food.save');
+Route::get('/food/create', [App\Http\Controllers\PizzaController::class,'create'])->name('food.create');
+Route::get('/food/{id}', [App\Http\Controllers\PizzaController::class,'show'])->name('food.show');
+Route::delete('/food/{id}', [App\Http\Controllers\PizzaController::class,'destroy'])->name('food.destroy');
+
+Auth::routes(
+    // ['register' => false,]
+   );
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
